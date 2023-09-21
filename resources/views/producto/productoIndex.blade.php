@@ -6,6 +6,15 @@
     <title>Productos Index</title>
 </head>
 <body>
-    <h1>Hola</h1>
+    <h1>Listado de Productos</h1>
+    <ul>
+        @foreach($productos as $producto)
+        <li>
+            <a href="{{route('producto.show', $producto->id)}}">
+            {{ $producto->nombre }}
+            </a>
+        </li>
+        @endforeach
+    </ul>
 </body>
 </html>

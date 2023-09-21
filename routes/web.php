@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('norma/pdf', [ProductoController::class, 'pdf'])->name('producto.pdf');
+
 Route::resource('producto', ProductoController::class);
