@@ -21,3 +21,13 @@ Route::get('/', function () {
 Route::get('norma/pdf', [ProductoController::class, 'pdf'])->name('producto.pdf');
 
 Route::resource('producto', ProductoController::class);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

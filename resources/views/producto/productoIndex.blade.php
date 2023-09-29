@@ -11,8 +11,18 @@
         @foreach($productos as $producto)
         <li>
             <a href="{{route('producto.show', $producto->id)}}">
-            {{ $producto->nombre }}
+                {{ $producto->nombre }} |
             </a>
+
+            <a href="{{route('producto.edit', $producto->id)}}">
+                Editar
+            </a>
+            |
+            <form action=" {{ route('producto.destroy', $producto) }} " method="post">
+                @csrf
+                @method('DELETE')
+                <input type="submit" value="Borrar">
+            </form>
         </li>
         @endforeach
     </ul>
