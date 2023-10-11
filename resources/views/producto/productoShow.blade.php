@@ -1,14 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>
-        Detalles de Producto {{$producto->nombre}}:
-    </h1>
-
-</body>
-</html>
+<x-mostrar-layout>
+    <div class="product_image_area">
+        <div class="container">
+            <div class="row s_product_inner">
+                <div class="col-lg-6">
+                    <div class="owl-carousel owl-theme s_Product_carousel">
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="{{asset('template/img/Ejemplo.jpg')}}" alt="">
+                        </div>
+                        <!-- <div class="single-prd-item">
+							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						</div> -->
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="s_product_text">
+                        <h1>{{ $producto->  nombre }}</h1><br>
+                        <h2>$ {{ $producto->precio }}</h2>
+                        <ul class="list">
+                            <li>
+                                <h4><span>Cantidad</span> : &nbsp; {{ $producto->cantidad }}</h4>
+                            </li>
+                            <li>
+                                <h4><span>Marca</span> : &nbsp; {{ $producto->marca }}</h4>
+                            </li>
+                            <li>
+                                <h4><span>Descripcion</span> : &nbsp; {{ $producto->descripcion }}</h4>
+                            </li>
+                        </ul>
+                        <div class="card_area d-flex align-items-center">
+                            <a class="icon_btn" href="{{route('producto.edit', $producto->id)}}"><i class="lnr lnr lnr-pencil"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-mostrar-layout>

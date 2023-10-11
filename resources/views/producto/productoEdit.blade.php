@@ -1,30 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Producto</title>
-</head>
-<body>
-    <h1>Editar Producto</h1>
+<x-editar-layout>
     <form action="{{ route('producto.update', $producto) }}" method="post">
         @csrf
         @method('PATCH')
-        <label for="nombre">Ingresa el nombre:</label>
-        <input type="text" name="nombre" id="nombre" value="{{ $producto->nombre }}" required><br><br>
+        <div class="p-3 p-lg-5 border">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="nombre" class="text-black">Nombre<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $producto->nombre }}">
+                    @error('nombre')
+                    <div class=" alert alert-danger">{{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="cantidad" class="text-black">Cantidad<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="cantidad" name="cantidad" value="{{ $producto->cantidad }}">
+                    @error('cantidad')
+                    <div class=" alert alert-danger">{{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="precio" class="text-black">Precio<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="precio" name="precio" value="{{ $producto->precio }}">
+                    @error('precio')
+                    <div class=" alert alert-danger">{{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="marca" class="text-black">Marca<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="marca" name="marca" value="{{ $producto->marca }}">
+                    @error('marca')
+                    <div class=" alert alert-danger">{{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
 
-        <label for="cantidad">Ingresa la cantidad:</label>
-        <input type="text" name="cantidad" id="cantidad" value="{{ $producto->cantidad }}" required><br><br>
-
-        <label for="precio">Ingresa el precio:</label>
-        <input type="text" name="precio" id="precio" value="{{ $producto->precio }}" required><br><br>
-
-        <label for="marca">Ingresa la marca:</label>
-        <input type="text" name="marca" id="marca" value="{{ $producto->marca }}" required><br><br>
-        
-        <label for="descripcion">Ingresa una descripcion:</label><br>
-        <textarea name="descripcion" id="descripcion" cols="30" rows="10" required>{{ $producto->descripcion }}</textarea><br><br>
-        <input type="submit"> 
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="descripcion" class="text-black">Descripcion<span class="text-danger">*</span></label>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="7" class="form-control">{{ $producto->descripcion }}</textarea>
+                    @error('descripcion')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Editar">
+                </div>
+            </div>
+        </div>
     </form>
-</body>
-</html>
+</x-editar-layout>
