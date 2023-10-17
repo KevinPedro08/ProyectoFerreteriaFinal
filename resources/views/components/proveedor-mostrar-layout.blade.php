@@ -23,7 +23,7 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <a class="navbar-brand logo_h" href=producto><img src="{{asset('template/img/Icon.png')}}" alt=""></a>
+                    <a class="navbar-brand logo_h" href="{{ route('producto.index') }}"><img src="{{asset('template/img/Icon.png')}}" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -31,7 +31,7 @@
                     </button>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item"><a class="nav-link" href="producto">Productos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('producto.index') }}">Productos</a></li>
                             <li class="nav-item active"><a class="nav-link" href="{{route('proveedor.index')}}">Proveedores</a></li>
                         </ul>
                     </div>
