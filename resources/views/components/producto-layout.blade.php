@@ -30,8 +30,8 @@
 					</button>
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-							<li class="nav-item active"><a class="nav-link" href="producto">Productos</a></li>
-							<li class="nav-item"><a class="nav-link" href="producto">Proveedores</a></li>
+							<li class="nav-item active"><a class="nav-link" href="{{ route('producto.index') }}">Productos</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Proveedores</a></li>
 						</ul>
 					</div>
 				</div>

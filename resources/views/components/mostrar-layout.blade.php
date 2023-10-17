@@ -31,8 +31,8 @@
                     </button>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="producto">Productos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="producto">Proveedores</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="{{ route('producto.index') }}">Productos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Proveedores</a></li>
                         </ul>
                     </div>
                 </div>
@@ -48,61 +48,39 @@
     <br><br><br><br><br><br>
 
     <!--================ Start footer Area  =================-->
-    <footer>
-        <div class="footer-area footer-only">
+    <footer class="footer">
+        <div class="footer-area">
             <div class="container">
                 <div class="row section_gap">
                     <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget tp_widgets ">
-                            <h4 class="footer_title large_title">Our Mission</h4>
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title large_title">Nuestra mision</h4>
                             <p>
-                                So seed seed green that winged cattle in. Gathering thing made fly you're no
-                                divided deep moved us lan Gathering thing us land years living.
+                                Brindar materiales y herramientas enfocadas a la industria ferretera dentro de la zona metropolitana de
+                                Guadalajara contando con buenos estandares de calidad y gran servicio.
                             </p>
                             <p>
-                                So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
+                                Gracias a la ISO 90003
                             </p>
                         </div>
                     </div>
                     <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-                        <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title">Quick Links</h4>
-                            <ul class="list">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Shop</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Product</a></li>
-                                <li><a href="#">Brand</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="single-footer-widget instafeed">
-                            <h4 class="footer_title">Gallery</h4>
-                            <ul class="list instafeed d-flex flex-wrap">
-                                <li><img src="img/gallery/r1.jpg" alt=""></li>
-                                <li><img src="img/gallery/r2.jpg" alt=""></li>
-                                <li><img src="img/gallery/r3.jpg" alt=""></li>
-                                <li><img src="img/gallery/r5.jpg" alt=""></li>
-                                <li><img src="img/gallery/r7.jpg" alt=""></li>
-                                <li><img src="img/gallery/r8.jpg" alt=""></li>
-                            </ul>
-                        </div>
                     </div>
                     <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
                         <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title">Contact Us</h4>
+                            <h4 class="footer_title">Contactanos</h4>
                             <div class="ml-40">
                                 <p class="sm-head">
                                     <span class="fa fa-location-arrow"></span>
-                                    Head Office
+                                    Negocio
                                 </p>
-                                <p>123, Main Street, Your City</p>
+                                <p>Guadalajara, Jalisco, Mexico</p>
 
                                 <p class="sm-head">
                                     <span class="fa fa-phone"></span>
-                                    Phone Number
+                                    Numero Telefonico
                                 </p>
                                 <p>
                                     +123 456 7890 <br>
@@ -114,8 +92,8 @@
                                     Email
                                 </p>
                                 <p>
-                                    free@infoexample.com <br>
-                                    www.infoexample.com
+                                    ferreteria@yahoo.com <br>
+                                    www.ferreteria.com
                                 </p>
                             </div>
                         </div>

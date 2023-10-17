@@ -30,8 +30,8 @@
                     </button>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="producto">Productos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="producto">Proveedores</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="{{ route('producto.index') }}">Productos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Proveedores</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="col-md-5 ml-auto">
                     <div class="p-4 border mb-3">
                         <span class="d-block text-primary h6 text-uppercase">Nombre</span>
-                        <p class="mb-0">Dato necesario y ademas debe contener mininmo un caracter y maximo 50 caracteres.</p>
+                        <p class="mb-0">Dato necesario y ademas debe contener minimo un caracter y maximo 50 caracteres.</p>
                     </div>
                     <div class="p-4 border mb-3">
                         <span class="d-block text-primary h6 text-uppercase">Cantidad</span>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="p-4 border mb-3">
                         <span class="d-block text-primary h6 text-uppercase">Marca</span>
-                        <p class="mb-0">Dato necesario y ademas debe contener mininmo un caracter y maximo 50 caracteres.</p>
+                        <p class="mb-0">Dato necesario y ademas debe contener minimo un caracter y maximo 50 caracteres.</p>
                     </div>
                     <div class="p-4 border mb-3">
                         <span class="d-block text-primary h6 text-uppercase">Descripcion</span>

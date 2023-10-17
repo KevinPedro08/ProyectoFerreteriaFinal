@@ -6,7 +6,7 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     <label for="nombre" class="text-black">Nombre<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $producto->nombre }}">
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $producto->marca) }}">
                     @error('nombre')
                     <div class=" alert alert-danger">{{ $message }}
                     </div>
@@ -16,7 +16,7 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     <label for="cantidad" class="text-black">Cantidad<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="cantidad" name="cantidad" value="{{ $producto->cantidad }}">
+                    <input type="text" class="form-control" id="cantidad" name="cantidad" value="{{ old('cantidad', $producto->marca) }}">
                     @error('cantidad')
                     <div class=" alert alert-danger">{{ $message }}
                     </div>
@@ -26,7 +26,7 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     <label for="precio" class="text-black">Precio<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="precio" name="precio" value="{{ $producto->precio }}">
+                    <input type="text" class="form-control" id="precio" name="precio" value="{{ old('precio', $producto->marca) }}">
                     @error('precio')
                     <div class=" alert alert-danger">{{ $message }}
                     </div>
@@ -36,7 +36,8 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     <label for="marca" class="text-black">Marca<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="marca" name="marca" value="{{ $producto->marca }}">
+                    <input type="text" class="form-control" id="marca" name="marca" value="{{ old('marca', $producto->marca) }}">
+
                     @error('marca')
                     <div class=" alert alert-danger">{{ $message }}
                     </div>
@@ -47,7 +48,7 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     <label for="descripcion" class="text-black">Descripcion<span class="text-danger">*</span></label>
-                    <textarea name="descripcion" id="descripcion" cols="30" rows="7" class="form-control">{{ $producto->descripcion }}</textarea>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="7" class="form-control">{{ old('descripcion', $producto->marca) }}</textarea>
                     @error('descripcion')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
