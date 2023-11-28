@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('marca');
             $table->text('descripcion');
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('imagen')->nullable();
         });
     }
 

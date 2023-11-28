@@ -3,17 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
-        $productos =  Producto::all();
-
+        if(Auth::id()){
+            //$productos =  Producto::all();
+            $productos =  Producto::with('user')->get();
+        }
+        else{
+            $productos =  Producto::all();
+        }
+        //$productos =  Producto::withTrashed()->get(); //Mostrar eliminados
         //dd($productos);
         
         return view('producto/productoIndex', compact('productos'));
@@ -24,7 +34,11 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view("producto/productoCreate");
+
+        $provees = Proveedor::all();
+
+        return view('producto/productoCreate', compact('provees'));
+        //return view("producto/productoCreate");
     }
 
     /**
@@ -38,14 +52,27 @@ class ProductoController extends Controller
             'precio' => ['required', 'numeric'],
             'marca' => ['required', 'min:1', 'max:50'],
             'descripcion' => ['required', 'min:5'],
+            'proveedor_id' => ['required'],
+            'archivo' => ['required', 'max:100000', 'mimes:jpg,png'],
         ]);
-        $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->cantidad = $request->cantidad;
-        $producto->precio = $request->precio;
-        $producto->marca = $request->marca;
-        $producto->descripcion = $request->descripcion;
-        $producto->save();
+
+        $request->merge([
+            'user_id' => Auth::id(),
+            'imagen' => $request->file('archivo')->store('public/imagenes'),
+        ]);
+
+        $producto = Producto::create($request->all());
+        $producto->proveedores()->attach($request->proveedor_id);
+
+        //$request->file('archivo')->store('public/imagenes');
+
+        //$producto = new Producto();
+        //$producto->nombre = $request->nombre;
+        //$producto->cantidad = $request->cantidad;
+        //$producto->precio = $request->precio;
+        //$producto->marca = $request->marca;
+        //$producto->descripcion = $request->descripcion;
+        //$producto->save();
 
         return redirect()->route('producto.index');
     }
@@ -63,8 +90,9 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-
-        return view("producto.productoEdit", compact('producto'));
+        $provees = Proveedor::all();
+        return view('producto.productoEdit', compact('provees', 'producto'));
+        //return view("producto.productoEdit", compact('producto'));
     }
 
     /**
@@ -78,13 +106,20 @@ class ProductoController extends Controller
             'precio' => ['required', 'numeric'],
             'marca' => ['required', 'min:1', 'max:50'],
             'descripcion' => ['required', 'min:5'],
+            'proveedor_id' => ['required'],
         ]);
-        $producto->nombre = $request->nombre;
-        $producto->cantidad = $request->cantidad;
-        $producto->precio = $request->precio;
-        $producto->marca = $request->marca;
-        $producto->descripcion = $request->descripcion;
-        $producto->save();
+
+        Producto::where('id', $producto->id)
+            ->update($request->except('_token', '_method', 'proveedor_id'));
+        
+        $producto->proveedores()->sync($request->proveedor_id);
+
+        //$producto->nombre = $request->nombre;
+        //$producto->cantidad = $request->cantidad;
+        //$producto->precio = $request->precio;
+        //$producto->marca = $request->marca;
+        //$producto->descripcion = $request->descripcion;
+        //$producto->save();
         
         return redirect()->route('producto.index');
     }
@@ -96,5 +131,10 @@ class ProductoController extends Controller
     {
         $producto->delete();
         return redirect()->route('producto.index');
+    }
+
+    public function favoritos()
+    { 
+        return view('producto/productoIndex');
     }
 }

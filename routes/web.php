@@ -16,14 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/', [ProductoController::class, 'index'])->name('home');
 
-Route::resource('producto', ProductoController::class);
 
-Route::resource('proveedor', ProveedorController::class);
-
+//Route::middleware('auth')->group(function() {
+        //Route::get('producto/favoritos', [ProductoController::class, 'favoritos'])->name('producto.favoritos');
+        
+        Route::resource('producto', ProductoController::class);
+        Route::resource('proveedor', ProveedorController::class);
+//});
 
 Route::middleware([
     'auth:sanctum',

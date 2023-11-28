@@ -34,6 +34,17 @@
                             <li class="nav-item active"><a class="nav-link" href="{{ route('producto.index') }}">Productos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('proveedor.index') }}">Proveedores</a></li>
                         </ul>
+                        @guest
+							<a class="nav-link" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+						@endguest
+						@auth
+						<a class="nav-link" href="{{ route('profile.show') }}">{{ Auth::user()->name }}</a>
+						<form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+                                <button class="button button-hero" type="submit">Log Out</button>
+                        </form>
+						@endauth
                     </div>
                 </div>
             </nav>

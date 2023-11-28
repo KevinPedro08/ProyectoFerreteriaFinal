@@ -33,6 +33,17 @@
 							<li class="nav-item active"><a class="nav-link" href="{{ route('producto.index') }}">Productos</a></li>
 							<li class="nav-item"><a class="nav-link" href="{{ route('proveedor.index') }}">Proveedores</a></li>
 						</ul>
+						@guest
+							<a class="nav-link" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+						@endguest
+						@auth
+						<a class="nav-link" href="{{ route('profile.show') }}">{{ Auth::user()->name }}</a>
+						<form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+                                <button class="button button-hero" type="submit">Log Out</button>
+                        </form>
+						@endauth
 					</div>
 				</div>
 			</nav>
@@ -54,8 +65,10 @@
 					<div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
 						<div class="hero-banner__content">
 							<h1>Productos</h1>
-							<p>Añade tus productos para tu tienda online.</p>
+							@auth
+							<p>Añade tus productos para la tienda online.</p>
 							<a class="button button-hero" href="{{route('producto.create')}}">Añadir Producto</a>
+							@endauth
 						</div>
 					</div>
 				</div>
@@ -68,7 +81,12 @@
 		<section class="section-margin calc-60px">
 			<div class="container">
 				<div class="section-intro pb-60px">
+					@guest
 					<h2>Lista de <span class="section-intro__style">Productos</span></h2>
+					@endguest
+					@auth
+					<h2>Lista de tus <span class="section-intro__style">Productos</span></h2>
+					@endauth
 				</div>
 				<div class="row">
 					{{$slot}}

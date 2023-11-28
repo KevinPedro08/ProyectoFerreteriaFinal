@@ -27,6 +27,7 @@
                             <li>
                                 <h4><span>Telefono</span> : &nbsp; {{ $proveedor->telefono }}</h4>
                             </li>
+                            @auth
                             <li>
                                 <h4><span>Creado el</span> : &nbsp; {{ $proveedor->created_at }}</h4>
                             </li>
@@ -34,9 +35,17 @@
                                 <h4><span>Ultima modificación</span> : &nbsp; {{ $proveedor->created_at }}</h4>
                             </li>
                         </ul>
+                        <br>
+                        <h3>Productos surtidos:</h3>
+                        <ul>
+                            @foreach($proveedor->productos as $pro)
+                                <li>{{$pro->nombre}}</li>
+                            @endforeach
+                        </ul>
                         <div class="card_area d-flex align-items-center">
                             <a class="icon_btn" href="{{route('proveedor.edit', $proveedor->id)}}"><i class="lnr lnr lnr-pencil"></i></a>
                         </div>
+                        @endauth
                     </div>
                 </div>
             </div>

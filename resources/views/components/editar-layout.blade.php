@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('template/vendors/bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/vendors/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/vendors/themify-icons/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('template/vendors/nice-select/nice-select.css')}}">
+    <!--<link rel="stylesheet" href="{{asset('template/vendors/nice-select/nice-select.css')}}">-->
     <link rel="stylesheet" href="{{asset('template/vendors/owl-carousel/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/vendors/owl-carousel/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/style.css')}}">
@@ -33,6 +33,17 @@
                             <li class="nav-item active"><a class="nav-link" href="{{ route('producto.index') }}">Productos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('proveedor.index') }}">Proveedores</a></li>
                         </ul>
+                        @guest
+							<a class="nav-link" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+						@endguest
+						@auth
+						<a class="nav-link" href="{{ route('profile.show') }}">{{ Auth::user()->name }}</a>
+						<form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+                                <button class="button button-hero" type="submit">Log Out</button>
+                        </form>
+						@endauth
                     </div>
                 </div>
             </nav>
@@ -151,7 +162,7 @@
     <script src="{{asset('template/vendors/bootstrap/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('template/vendors/skrollr.min.js')}}"></script>
     <script src="{{asset('template/vendors/owl-carousel/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('template/vendors/nice-select/jquery.nice-select.min.js')}}"></script>
+    <!--<script src="{{asset('template/vendors/nice-select/jquery.nice-select.min.js')}}"></script>-->
     <script src="{{asset('template/vendors/jquery.ajaxchimp.min.js')}}"></script>
     <script src="{{asset('template/vendors/mail-script.js')}}"></script>
     <script src="{{asset('template/js/main.js')}}"></script>
